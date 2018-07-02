@@ -1,5 +1,7 @@
 #ifndef VETERINARIO_H
 #define VETERINARIO_H
+#include "funcionario.h"
+#include <iostream>
 
 class Veterinario : public Funcionario{
 
@@ -7,10 +9,10 @@ protected:
 	std::string funcao;
 	
 public:
-	Veterinario(int id_, string nome_, string cpf_, short idade_,  short tipoSanguineo_, char fatorRH_,
+	Veterinario(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,
 					string especialidade_);
 	~Veterinario();
-
+/*
 	//adiciona in
 	friend std::istream& operator>> (std::istream& is, Funcionario& f){
 			getline(is, f.id, ';');
@@ -39,6 +41,6 @@ public:
 	   	return (f1.cpf == f2.cpf );
     }
 
-
+*/
 };
 #endif

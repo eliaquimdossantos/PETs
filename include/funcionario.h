@@ -6,7 +6,7 @@ using std::string;
 
 class Funcionario{	
 	public:
-		Funcionario(int id_, string nome_, string cpf_, short idade_,  short tipoSanguineo_, char fatorRH_,
+		Funcionario(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,
 					string especialidade_);
 
 		~Funcionario();
@@ -17,8 +17,8 @@ class Funcionario{
 		int id;
 		string nome;
 		string cpf;
-		short idade;
-		short tipoSanguineo;
+		int idade;
+		string tipoSanguineo;
 		char fatorRH;
 		string especialidade;
 
@@ -30,8 +30,8 @@ class Funcionario{
 		   int getId();
 		string getNome();
 		string getCpf();
-		 short getIdade();
-		 short getTipoSanguineo();
+		   int getIdade();
+		 string getTipoSanguineo();
 		  char getFatorRH();
 		string getEspecialidade();
 		
@@ -39,8 +39,8 @@ class Funcionario{
 		void setId(int id_);
 		void setNome(string nome_);
 		void setCpf(string cpf_);
-		void setIdade(short idade_);
-		void setTipoSanguineo(short tipoSanguineo_);
+		void setIdade(int idade_);
+		void setTipoSanguineo(string tipoSanguineo_);
 		void setFatorRH(char fatorRH_);
 		void setEspecialidade(string especialidade_);
 

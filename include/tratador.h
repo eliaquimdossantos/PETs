@@ -1,15 +1,17 @@
 #ifndef TRATADOR_H
 #define TRATADOR_H
+#include "funcionario.h"
+#include <iostream>
 
 class Tratador : public Funcionario{
 protected:
 	std::string funcao;
 
 public:
-	Tratador(int id_, string nome_, string cpf_, short idade_,  short tipoSanguineo_, char fatorRH_,
+	Tratador(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,
 					string especialidade_);
 	~Tratador();
-
+/*
 	//adiciona in
 	friend std::istream& operator>> (std::istream& is, Funcionario& f){
 			getline(is, f.id, ';');
@@ -37,6 +39,6 @@ public:
 	friend bool operator== (Funcionario &f1, Funcionario &f2){
 	   	return (f1.cpf == f2.cpf );
     }
-
+*/
 };
 #endif

@@ -1,4 +1,6 @@
-Funcionario::Funcionario(int id_, string nome_, string cpf_, short idade_,  short tipoSanguineo_, char fatorRH_,string especialidade_):
+#include "funcionario.h"
+
+Funcionario::Funcionario(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,string especialidade_):
 						id(id_),nome(nome_),cpf(cpf_),idade(idade_),tipoSanguineo(tipoSanguineo_),fatorRH(fatorRH_), especialidade(especialidade_){}
 
 Funcionario::~Funcionario(){}
@@ -15,10 +17,10 @@ string Funcionario::getCpf(){
 	return cpf;
 }
 
-short Funcionario::getIdade(){
+int Funcionario::getIdade(){
 	return idade;
 }
-short Funcionario::getTipoSanguineo(){
+string Funcionario::getTipoSanguineo(){
 	return tipoSanguineo;
 }
 char Funcionario::getFatorRH(){
@@ -38,10 +40,10 @@ void Funcionario::setNome(string nome_){
 void Funcionario::setCpf(string cpf_){
 	cpf = cpf_;
 }
-void Funcionario::setIdade(short idade_){
+void Funcionario::setIdade(int idade_){
 	idade = idade_;
 }
-void Funcionario::setTipoSanguineo(short tipoSanguineo_){
+void Funcionario::setTipoSanguineo(string tipoSanguineo_){
 	tipoSanguineo =  tipoSanguineo_;
 }
 void Funcionario::setFatorRH(char fatorRH_){
