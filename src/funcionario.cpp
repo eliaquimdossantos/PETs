@@ -1,3 +1,9 @@
+Funcionario::Funcionario(int id_, string nome_, string cpf_, short idade_,  short tipoSanguineo_, char fatorRH_,string especialidade_):
+						id(id_),nome(nome_),cpf(cpf_),idade(idade_),tipoSanguineo(tipoSanguineo_),fatorRH(fatorRH_), especialidade(especialidade_){}
+
+Funcionario::~Funcionario(){}
+
+
 // getters
 int Funcionario::getId(){
 	return id;

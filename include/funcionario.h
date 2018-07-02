@@ -6,11 +6,10 @@ using std::string;
 
 class Funcionario{	
 	public:
-		Funcionario();
 		Funcionario(int id_, string nome_, string cpf_, short idade_,  short tipoSanguineo_, char fatorRH_,
 					string especialidade_);
 
-		virtual ~Funcionario();
+		~Funcionario();
 
 	
 	//# protegido
@@ -27,7 +26,7 @@ class Funcionario{
 		
 		
 	public:
-		/// getters
+		// getters
 		   int getId();
 		string getNome();
 		string getCpf();
@@ -36,7 +35,7 @@ class Funcionario{
 		  char getFatorRH();
 		string getEspecialidade();
 		
-		/// Setters
+		// Setters
 		void setId(int id_);
 		void setNome(string nome_);
 		void setCpf(string cpf_);
