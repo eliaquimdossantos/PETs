@@ -1,46 +1,21 @@
 #ifndef VETERINARIO_H
 #define VETERINARIO_H
 #include "funcionario.h"
-#include <iostream>
+
 
 class Veterinario : public Funcionario{
 
 protected:
-	std::string funcao;
+	string funcao;
 	
 public:
-	Veterinario(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,
-					string especialidade_);
+	Veterinario(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,	string especialidade_);
 	~Veterinario();	
-/*
-	//adiciona in
-	friend std::istream& operator>> (std::istream& is, Funcionario& f){
-			getline(is, f.id, ';');
-			getline(is, f.funcao, ';');
-		    getline(is, f.nome, ';');
-		    getline(is, f.cpf, ';');
-		    getline(is, f.idade, ';');
-		    getline(is, f.tipoSanguineo, ';');
-		    getline(is, f.fatorRH, ';');
-			getline(is, f.especialidade );
-			    
-	    return is;	
-	}
-	
-    // imprimir out
-    friend std::ostream& operator << (std::ostream& os, Funcionario& f){
 
-	     os << f.id << ";"<< f.funcao << ";"<< f.nome << ";"<< f.cpf << ";"
-		<< f.idade << ";"<< f.tipoSanguineo << ";"<< f.fatorRH << ";"<< f.especialidade;
-	    	
-	    return os;
-	}
+	string getFuncao();
+	void   setFuncao(string funcao_);
 
-	// Compara
-	friend bool operator== (Funcionario &f1, Funcionario &f2){
-	   	return (f1.cpf == f2.cpf );
-    }
+	std::ostream& imprimir(std::ostream &o) const;
 
-*/
 };
 #endif

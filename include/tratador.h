@@ -1,44 +1,20 @@
 #ifndef TRATADOR_H
 #define TRATADOR_H
 #include "funcionario.h"
-#include <iostream>
 
 class Tratador : public Funcionario{
+
 protected:
-	std::string funcao;
+	string funcao;
 
 public:
-	Tratador(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,
-					string especialidade_);
+	Tratador(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,	string especialidade_);
 	~Tratador();
-/*
-	//adiciona in
-	friend std::istream& operator>> (std::istream& is, Funcionario& f){
-			getline(is, f.id, ';');
-			getline(is, f.funcao, ';');
-		    getline(is, f.nome, ';');
-		    getline(is, f.cpf, ';');
-		    getline(is, f.idade, ';');
-		    getline(is, f.tipoSanguineo, ';');
-		    getline(is, f.fatorRH, ';');
-			getline(is, f.especialidade );
-			    
-	    return is;	
-	}
+
+	string getFuncao();
+	void   setFuncao(string funcao_);
 	
-    // imprimir out
-    friend std::ostream& operator << (std::ostream& os, Funcionario& f){
+	std::ostream& imprimir(std::ostream &o) const;
 
-	     os << f.id << ";"<< f.funcao << ";"<< f.nome << ";"<< f.cpf << ";"
-		<< f.idade << ";"<< f.tipoSanguineo << ";"<< f.fatorRH << ";"<< f.especialidade;
-	    	
-	    return os;
-	}
-
-	// Compara
-	friend bool operator== (Funcionario &f1, Funcionario &f2){
-	   	return (f1.cpf == f2.cpf );
-    }
-*/
 };
 #endif

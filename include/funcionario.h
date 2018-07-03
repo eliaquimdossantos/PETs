@@ -1,9 +1,14 @@
 #ifndef FUNCIONARIO_H
 #define FUNCIONARIO_H
 #include <string>
+using std::string;
+
 #include <iostream>
 
-using std::string;
+using std::endl;
+using std::cout;
+
+#include <iomanip>
 
 class Funcionario{	
 public:
@@ -22,6 +27,7 @@ protected:
 	string tipoSanguineo;
 	char fatorRH;
 	string especialidade;
+	
 
 private:
 	
@@ -32,9 +38,10 @@ public:
 	string getNome();
 	string getCpf();
 	   int getIdade();
-	 string getTipoSanguineo();
+	string getTipoSanguineo();
 	  char getFatorRH();
 	string getEspecialidade();
+
 	
 	// Setters
 	void setId(int id_);
@@ -45,10 +52,14 @@ public:
 	void setFatorRH(char fatorRH_);
 	void setEspecialidade(string especialidade_);
 
+	friend bool operator== (Funcionario &f1, Funcionario &f2);
+
 	/**
 	 *@brief Sobrecarga do operador de inserção
 	 */
-	friend std::ostream& operator<< (std::ostream& o, Funcionario& f);
+	friend std::ostream& operator<< (std::ostream &o, Funcionario const &t); 
+	virtual std::ostream& imprimir(std::ostream&) const = 0;
+
 };
 
  

@@ -1,6 +1,6 @@
 #include "funcionario.h"
 
-Funcionario::Funcionario(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,string especialidade_):
+Funcionario::Funcionario(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_, string especialidade_):
 						id(id_),nome(nome_),cpf(cpf_),idade(idade_),tipoSanguineo(tipoSanguineo_),fatorRH(fatorRH_), especialidade(especialidade_){}
 
 Funcionario::~Funcionario(){}
@@ -52,14 +52,11 @@ void Funcionario::setFatorRH(char fatorRH_){
 void Funcionario::setEspecialidade(string especialidade_){
 	especialidade = especialidade_;
 }
-std::ostream& operator<< (std::ostream& o, Funcionario& f){
-	o << "Nome: "  			<< f.nome    	   << std::endl
-	  << "ID: "    			<< f.id      	   << "   "
-	  << "CPF: "   			<< f.cpf     	   << "   "
-	  << "Idade: " 			<< f.idade   	   << std::endl 
-	  << "Tipo sanguineo: " << f.tipoSanguineo << "   " 
-	  << "Fator RH: "		<< f.fatorRH 	   << std::endl
-	  << "Especialidade: "  << f.especialidade << std::endl;
 
-	return o;
+bool operator== (Funcionario &f1, Funcionario &f2){
+	   	return (f1.cpf == f2.cpf );
+}
+
+std::ostream& operator<< (std::ostream &o, Funcionario const &f) {
+	return f.imprimir(o);
 }
