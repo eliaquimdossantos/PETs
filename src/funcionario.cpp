@@ -52,3 +52,14 @@ void Funcionario::setFatorRH(char fatorRH_){
 void Funcionario::setEspecialidade(string especialidade_){
 	especialidade = especialidade_;
 }
+std::ostream& operator<< (std::ostream& o, Funcionario& f){
+	o << "Nome: "  			<< f.nome    	   << std::endl
+	  << "ID: "    			<< f.id      	   << "   "
+	  << "CPF: "   			<< f.cpf     	   << "   "
+	  << "Idade: " 			<< f.idade   	   << std::endl 
+	  << "Tipo sanguineo: " << f.tipoSanguineo << "   " 
+	  << "Fator RH: "		<< f.fatorRH 	   << std::endl
+	  << "Especialidade: "  << f.especialidade << std::endl;
+
+	return o;
+}

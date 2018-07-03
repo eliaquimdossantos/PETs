@@ -11,7 +11,7 @@ protected:
 public:
 	Veterinario(int id_, string nome_, string cpf_, int idade_,  string tipoSanguineo_, char fatorRH_,
 					string especialidade_);
-	~Veterinario();
+	~Veterinario();	
 /*
 	//adiciona in
 	friend std::istream& operator>> (std::istream& is, Funcionario& f){
