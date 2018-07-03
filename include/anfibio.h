@@ -24,11 +24,7 @@ public:
 	/**
 	 * @brief Construtor parametrizado
 	 */
-	Anfibio(int total_mudas_, string ultima_muda_, string id_, 
-		string classe_, string nome_, string cientifico_, 
-		string sexo_, string tamanho_, string dieta_, 
-		Veterinario& veterinario_, Tratador& tratador_, 
-		string batismo_);
+	Anfibio(int total_mudas_, string ultima_muda_ );
 	/**
 	 * @brief Destrutor
 	 */   
