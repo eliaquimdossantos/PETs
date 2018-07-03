@@ -14,15 +14,15 @@ public:
 	/**
 	 * @brief Construtor padrão
 	 */
-	AnimalSilvestre();
+	Nativo();
 	/**
 	 * @brief Construtor parametrizado
 	 */
-	AnimalSilvestre(string uf_origem_, string autorizacao_);
+	Nativo(string uf_origem_, string autorizacao_, string ibama_);
 	/**
 	 * @brief Destrutor
 	 */
-	~AnimalSilvestre();
+	~Nativo();
 	/**
 	 * @brief Utilizada para obter a origem do animal
 	 * @return Origem do animal

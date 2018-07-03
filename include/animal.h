@@ -31,7 +31,7 @@ public:
 	/**
 	 * @brief Construtor parametrizado
 	 */
-	Animal(string id_, string classe_, string nome_, string cientifico_, string sexo_, string tamanho_,
+	Animal(string id_, string classe_, string nome_, string cientifico_, string sexo_, float tamanho_,
 		string dieta_, Veterinario& veterinario_, Tratador& tratador_, string batismo_);	
 	/**
 	 * @brief Destrutor

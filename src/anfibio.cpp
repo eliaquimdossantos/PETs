@@ -9,8 +9,13 @@ Anfibio::Anfibio() {
 
 }
 
-Anfibio::Anfibio(int total_mudas_, string ultima_muda_): 
-	total_mudas(total_mudas_), ultima_muda(ultima_muda_) {
+Anfibio::Anfibio(int total_mudas_, string ultima_muda_, string id_, 
+		string classe_, string nome_, string cientifico_, 
+		string sexo_, string tamanho_, string dieta_, 
+		Veterinario& veterinario_, Tratador& tratador_, 
+		string batismo_): total_mudas(total_mudas_), ultima_muda(ultima_muda_), 
+		Animal(id_, classe_, nome_, cientifico_, sexo_, tamanho_, dieta_, veterinario_,
+		tratador_, batismo_){
 		
 }
     
