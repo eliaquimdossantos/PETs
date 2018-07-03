@@ -15,6 +15,7 @@ AveNativa::AveNativa(string uf_origem_, string autorizacao_,
 			sexo_, tamanho_, dieta_, veterinario_, tratador_, batismo_){
 
 }
+
 AveNativa::~AveNativa(){
 
 }
