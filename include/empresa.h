@@ -2,6 +2,8 @@
 #define EMPRESA_ 
 
 #include "funcionario.h"
+#include "veterinario.h"
+#include "tratador.h"
 
 #include <vector>
 using std::vector;
@@ -29,18 +31,21 @@ using std::vector;
 class Empresa{
 private:
 	vector<Funcionario> armazenaFuncionarios;
+	string pathFuncionarios;
+	string pathAnimais;
 
 public:
-	Empresa();
+	Empresa(string diretorioData_);
 	~Empresa();
 
-	void carregarFuncionarios(string path_);
-	void gravarFuncionarios(string path_);
+	void carregarFuncionarios();
+	void gravarFuncionarios();
 	//void carregarAnimais(string path_);
 
 	//temporária para testes
 	void adicionarFuncionarios(Funcionario& f);
 	void mostrarFuncionarios();
+	void empregarFuncionarios();
 };
 
 #endif
