@@ -35,6 +35,10 @@ public:
 
 	void carregarFuncionarios(string path_);
 	//void carregarAnimais(string path_);
+
+	//temporária para testes
+	void adicionarFuncionarios(Funcionario& f);
+	void mostrarFuncionarios();
 };
 
 #endif

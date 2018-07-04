@@ -8,8 +8,5 @@ public:
 	Tratador(string id_, string nome_, string cpf_, string idade_,  string tipoSanguineo_, string fatorRH_,	string especialidade_);
 	~Tratador();
 
-
-	std::ostream& imprimir(std::ostream &o) const;
-
 };
 #endif

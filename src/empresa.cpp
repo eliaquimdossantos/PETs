@@ -22,3 +22,15 @@ void Empresa::carregarFuncionarios(string path_){
        cout << "Erro ao abrir arquivo " << path_ << endl;
        //erro ao abrir arquivo... modificar depois p throw 
 }
+
+void Empresa::adicionarFuncionarios(Funcionario& f){
+	armazenaFuncionarios.push_back(f);
+}
+
+void Empresa::mostrarFuncionarios(){
+	vector<Funcionario>::iterator it = armazenaFuncionarios.begin();
+
+	for(it; it != armazenaFuncionarios.end(); it++){
+		cout << *it;
+	}
+}

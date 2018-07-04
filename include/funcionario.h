@@ -15,7 +15,12 @@ using std::cin;
  class Funcionario{	
 public:
 	Funcionario();
-	Funcionario(string id_, string nome_, string cpf_, string idade_,  string tipoSanguineo_, string fatorRH_, string especialidade_);
+	Funcionario(string id_, string nome_, string cpf_, 
+		string idade_,  string tipoSanguineo_, string fatorRH_, 
+		string especialidade_);
+	Funcionario(string id_, string nome_, string cpf_,
+		string idade_,  string tipoSanguineo_, string fatorRH_, 
+		string especialidade_, const string funcao_);
 
 	~Funcionario();
 
@@ -64,7 +69,7 @@ public:
 	 */
 	friend std::ostream& operator<< (std::ostream &o, Funcionario const &f); 
 	friend std::istream& operator>> (std::istream &i, Funcionario &f);
-	virtual std::ostream& imprimir(std::ostream&) const = 0;
+	std::ostream& imprimir(std::ostream&) const;
 
 };
 

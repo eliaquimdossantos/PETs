@@ -1,7 +1,22 @@
 #include "funcionario.h"
 
-Funcionario::Funcionario(string id_, string nome_, string cpf_, string idade_,  string tipoSanguineo_, string fatorRH_, string especialidade_):
-						id(id_),nome(nome_),cpf(cpf_),idade(idade_),tipoSanguineo(tipoSanguineo_),fatorRH(fatorRH_), especialidade(especialidade_){}
+Funcionario::Funcionario(string id_, string nome_, string cpf_, 
+		string idade_, string tipoSanguineo_, string fatorRH_, 
+			string especialidade_):
+			id(id_),nome(nome_),cpf(cpf_),idade(idade_),
+			tipoSanguineo(tipoSanguineo_),fatorRH(fatorRH_), 
+			especialidade(especialidade_){
+
+}
+
+Funcionario::Funcionario(string id_, string nome_, string cpf_,
+		string idade_,  string tipoSanguineo_, string fatorRH_, 
+		string especialidade_, const string funcao_):
+			id(id_),nome(nome_),cpf(cpf_),idade(idade_),
+			tipoSanguineo(tipoSanguineo_),fatorRH(fatorRH_), 
+			especialidade(especialidade_),funcao(funcao_){
+
+}
 
 Funcionario::~Funcionario(){}
 
@@ -63,6 +78,20 @@ void Funcionario::setEspecialidade(string especialidade_){
 
 bool operator== (Funcionario &f1, Funcionario &f2){
 	   	return (f1.cpf == f2.cpf );
+}
+
+std::ostream& Funcionario::imprimir(std::ostream &o) const{
+	o << "Nome: "		    <<  nome    	   << endl 
+	  << "ID: "	  			<<  id     	   << endl 
+	  << "CPF: "  			<<  cpf    	   << endl 
+	  << "Idade: " 			<<  idade   	   <<  endl 
+	  << "Tipo sanguineo: " <<  tipoSanguineo << endl 
+	  << "Fator RH: " 		<<  fatorRH	   << endl 
+	  << "Função: " 			<<  funcao        << endl
+	  << "Especialidade: "  <<  especialidade  << endl
+	  << "------------------------------------------------------------";
+	
+	return o;
 }
 
 std::ostream& operator<< (std::ostream &o, Funcionario const &f) {
