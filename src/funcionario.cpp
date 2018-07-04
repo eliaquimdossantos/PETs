@@ -96,6 +96,11 @@ std::ostream& Funcionario::imprimir(std::ostream &o) const{
 	return o;
 }
 
+string Funcionario::gerarCSV(Funcionario &f){
+	string aux =f.id +";"+f.funcao+";"+f.nome+";"+f.cpf+";"+f.idade+";"+f.tipoSanguineo+";"+f.fatorRH+";"+f.especialidade+"\n";
+	return aux;
+}
+
 std::ostream& operator<< (std::ostream &o, Funcionario const &f) {
 	return f.imprimir(o);
 }

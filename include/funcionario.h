@@ -62,6 +62,7 @@ public:
 	void setEspecialidade(string especialidade_);
 	void setFuncao(string funcao_);
 
+	string gerarCSV(Funcionario &f);
 	friend bool operator== (Funcionario &f1, Funcionario &f2);
 
 	/**
