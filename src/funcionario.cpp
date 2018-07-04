@@ -1,5 +1,7 @@
 #include "funcionario.h"
 
+Funcionario::Funcionario(){}
+
 Funcionario::Funcionario(string id_, string nome_, string cpf_, 
 		string idade_, string tipoSanguineo_, string fatorRH_, 
 			string especialidade_):

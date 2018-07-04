@@ -28,13 +28,13 @@ public:
 //# protegido
 protected:
 	string id;
-	string funcao;
 	string nome;
 	string cpf;
 	string idade;
 	string tipoSanguineo;
 	string fatorRH;
 	string especialidade;
+	string funcao;
 	
 
 private:

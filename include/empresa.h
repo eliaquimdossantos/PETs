@@ -8,6 +8,7 @@ using std::vector;
 
 #include <fstream> 
 using std::ifstream;
+using std::ofstream;
 
 #include <iostream>
 using std::cout;
@@ -34,6 +35,7 @@ public:
 	~Empresa();
 
 	void carregarFuncionarios(string path_);
+	void gravarFuncionarios(string path_);
 	//void carregarAnimais(string path_);
 
 	//temporária para testes
