@@ -20,8 +20,14 @@ void Util::buscaExporta(string classe, string veterinario, string tratador){
 
 void Util::exportar(string nomeArqSaida){
 	Empresa my("~/PETs/data");
-	my.setArmAnimais(armSaida);
-	my.gravarAnimais(nomeArqSaida);
+	
+	if(armSaida.empty()){
+		my.setArmAnimais(armAnimal);
+		my.gravarAnimais(nomeArqSaida);
+	}else{
+		my.setArmAnimais(armSaida);
+		my.gravarAnimais(nomeArqSaida);
+	}
 }
 
 int main(int argc, char *argv[]){
