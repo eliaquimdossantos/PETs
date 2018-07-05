@@ -43,7 +43,7 @@ void Empresa::gravarFuncionarios(){
 	//grava no arquivo limpo
     if (csvFunc.is_open() && csvFunc.good()){
     	
-       for (armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
+       for (it=armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
                 //dados separados por ;
                 csvFunc << (*it).gerarCSV(*it);
         }
@@ -58,7 +58,8 @@ void Empresa::gravarFuncionarios(){
 **/
 void Empresa::adicionarFuncionarios(Funcionario& f){
 	bool find = false;
-	
+	carregarFuncionarios();
+
 	for(it=armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
 		if((*it).getCpf() == f.getCpf()){
 			
@@ -69,8 +70,9 @@ void Empresa::adicionarFuncionarios(Funcionario& f){
 	if(!find){
 		armazenaFuncionarios.push_back(f);
 		cout << endl << "Bem vindo " << f.getNome() << endl;
+		gravarFuncionarios();
 	}else{
-		cout <<"Funcionario existente!" << endl;
+		cout << endl <<" Funcionario existente!" << endl;
 	}
 }
 
@@ -78,34 +80,43 @@ void Empresa::adicionarFuncionarios(Funcionario& f){
 void Empresa::mostrarFuncionarios(){
 
 	carregarFuncionarios();
-	cout << "		LISTA DE FUNCIONARIOS 		" << endl << endl;
+	cout << endl <<  "		LISTA DE FUNCIONARIOS 		" << endl << endl;
 	cout << "--------------------------------------------" << endl;
-	it = armazenaFuncionarios.begin();
 
+	//imprimir
 	for(it=armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
 		cout << *it << endl;
 	}
+	
+	if(armazenaFuncionarios.empty())
+		cout << " lista vazia!" << endl;
 	system("sleep 6");
 }
 
 void Empresa::excluiFuncionario(){
 	string cpf_ = "";
-	cout << "digite o cpf do funcionario a ser deletado:";
+	cout << "digite o cpf do funcionario a ser deletado: ";
 	cin >> cpf_;
 	carregarFuncionarios();
+	bool find = false;
 
 	for(it=armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
 		if((*it).getCpf() == cpf_){
 			armazenaFuncionarios.erase(it);
-			cout << (*it).getNome() << " deletado com sucesso!" << endl;
-			system("sleep 5");
-			gravarFuncionarios();
+			find = true;
 			break;
 		}
 	}
-	
-	cout << "Funcionario nao encotrado! cpf buscado " << cpf_ << endl;
-	system("sleep 5");
+
+	if(find){
+		cout << (*it).getNome() << "deletado com sucesso!" << endl;
+		system("sleep 5");
+		gravarFuncionarios();
+
+	}else{
+		cout << "Funcionario nao encotrado! cpf buscado " << cpf_ << endl;
+		system("sleep 5");
+	}
 		
 }
 
