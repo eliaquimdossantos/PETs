@@ -43,9 +43,9 @@ void Empresa::gravarFuncionarios(){
 	//grava no arquivo limpo
     if (csvFunc.is_open() && csvFunc.good()){
     	
-        for (int i =0; i < (int)armazenaFuncionarios.size(); i++){
+       for (armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
                 //dados separados por ;
-                csvFunc << armazenaFuncionarios[i].gerarCSV(armazenaFuncionarios[i]);
+                csvFunc << (*it).gerarCSV(*it);
         }
          csvFunc.close();
 	}else 
@@ -58,9 +58,9 @@ void Empresa::gravarFuncionarios(){
 **/
 void Empresa::adicionarFuncionarios(Funcionario& f){
 	bool find = false;
-
-	for(int i=0; i < (int)armazenaFuncionarios.size(); i++){
-		if(armazenaFuncionarios[i].getCpf() == f.getCpf()){
+	
+	for(it=armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
+		if((*it).getCpf() == f.getCpf()){
 			
 			find = true;
 		}
@@ -68,7 +68,7 @@ void Empresa::adicionarFuncionarios(Funcionario& f){
 	//se passou na verificacao adiciona
 	if(!find){
 		armazenaFuncionarios.push_back(f);
-		cout << "bem vindo " << f.getNome() << endl;
+		cout << endl << "Bem vindo " << f.getNome() << endl;
 	}else{
 		cout <<"Funcionario existente!" << endl;
 	}
@@ -80,9 +80,9 @@ void Empresa::mostrarFuncionarios(){
 	carregarFuncionarios();
 	cout << "		LISTA DE FUNCIONARIOS 		" << endl << endl;
 	cout << "--------------------------------------------" << endl;
-	vector<Funcionario>::iterator it = armazenaFuncionarios.begin();
+	it = armazenaFuncionarios.begin();
 
-	for(; it != armazenaFuncionarios.end(); it++){
+	for(it=armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
 		cout << *it << endl;
 	}
 	system("sleep 6");
@@ -93,26 +93,20 @@ void Empresa::excluiFuncionario(){
 	cout << "digite o cpf do funcionario a ser deletado:";
 	cin >> cpf_;
 	carregarFuncionarios();
-	int findPosit = -1;
 
-	for(int i=0; i < (int)armazenaFuncionarios.size(); i++){
-		if(armazenaFuncionarios[i].getCpf() == cpf_){
-			findPosit = i;
+	for(it=armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
+		if((*it).getCpf() == cpf_){
+			armazenaFuncionarios.erase(it);
+			cout << (*it).getNome() << " deletado com sucesso!" << endl;
+			system("sleep 5");
+			gravarFuncionarios();
 			break;
 		}
 	}
 	
-	if(findPosit==-1){
-		cout << "Funcionario nao encotrado! cpf buscado " << cpf_ << endl;
-		system("sleep 5");
-	}else{
-		armazenaFuncionarios.erase(armazenaFuncionarios.begin() +findPosit);
-		cout << armazenaFuncionarios[findPosit].getNome() << " deletado com sucesso!" << endl;
-		gravarFuncionarios();
-		system("sleep 5");
-	}
-
-
+	cout << "Funcionario nao encotrado! cpf buscado " << cpf_ << endl;
+	system("sleep 5");
+		
 }
 
 /**
@@ -175,7 +169,7 @@ void Empresa::empregarFuncionarios(){
 		cin.ignore();
 		cout<<"Digite o nome do funcionario.: ";
 		getline(cin, nome);
-		cin.ignore();
+		//cin.ignore();
 		cout<<"Digite o cpf.: ";
 		cin >> cpf;
 		cin.ignore();

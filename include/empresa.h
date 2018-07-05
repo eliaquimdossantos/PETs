@@ -33,6 +33,7 @@ private:
 	vector<Funcionario> armazenaFuncionarios;
 	string pathFuncionarios;
 	string pathAnimais;
+	vector<Funcionario>::iterator it;
 
 public:
 	Empresa(string diretorioData_);
