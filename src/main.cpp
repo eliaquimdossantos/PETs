@@ -18,8 +18,9 @@ int main(){
 		cout<<" * (4) Consultar animais por nome             *"<<endl;
 		cout<<" * (5) Cadastrar funcionario                  *"<<endl;
 		cout<<" * (6) Excluir funcionario                    *"<<endl;
-		cout<<" * (7) Consultar cadastro de funcinarios      *"<<endl;
-		cout<<" * (8) Consultar animais por funcionarios     *"<<endl;
+		cout<<" * (7) Listar funcionarios                    *"<<endl;
+		cout<<" * (8) Consultar cadastro de funcinarios      *"<<endl;
+		cout<<" * (9) Consultar animais por funcionarios     *"<<endl;
 		cout<<" * (0) Exit                                   *"<<endl;
 		cout<<" **********************************************"<<endl;
 		cout<<" Digite sua opção:";
@@ -28,9 +29,20 @@ int main(){
 		cin>>op;
 
 
-		switch(op) {
+		switch(op){
+
 			case 5:
 				my.empregarFuncionarios();
+			break;
+
+			case 6:
+
+				 my.excluiFuncionario();
+			break;
+
+			case 7:
+				my.mostrarFuncionarios();
+				cout << "7" << endl;
 			break;
 
 			default:

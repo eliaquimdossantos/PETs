@@ -40,6 +40,7 @@ public:
 
 	void carregarFuncionarios();
 	void gravarFuncionarios();
+	void excluiFuncionario();
 	//void carregarAnimais(string path_);
 
 	//temporária para testes

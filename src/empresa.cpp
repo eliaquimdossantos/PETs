@@ -34,7 +34,7 @@ void Empresa::gravarFuncionarios(){
 
 	//limpar arquivo
 	if (limpar.is_open() && limpar.good()){
-			limpar << "";
+			limpar << "\n";
 			limpar.close();
 	}else
 		cout << "Erro ao abrir arquivo 1" << pathFuncionarios << endl;
@@ -56,7 +56,7 @@ void Empresa::gravarFuncionarios(){
 * @brief verifica se ja exite um funcionario com mesmo cpf, se nao adiciona
 **/
 void Empresa::adicionarFuncionarios(Funcionario& f){
-		bool find = false;
+	bool find = false;
 
 	for(int i=0; i < (int)armazenaFuncionarios.size(); i++){
 		if(armazenaFuncionarios[i].getCpf() == f.getCpf()){
@@ -75,11 +75,40 @@ void Empresa::adicionarFuncionarios(Funcionario& f){
 
 
 void Empresa::mostrarFuncionarios(){
+
+	carregarFuncionarios();
 	vector<Funcionario>::iterator it = armazenaFuncionarios.begin();
 
 	for(; it != armazenaFuncionarios.end(); it++){
 		cout << *it << endl;
 	}
+}
+
+void Empresa::excluiFuncionario(){
+	string cpf_ = "";
+	cout << "digite o cpf do funcionario a ser deletado:";
+	cin >> cpf_;
+	carregarFuncionarios();
+	int findPosit = -1;
+
+	for(int i=0; i < (int)armazenaFuncionarios.size(); i++){
+		if(armazenaFuncionarios[i].getCpf() == cpf_){
+			findPosit = i;
+			break;
+		}
+	}
+	if(findPosit==-1){
+		cout << "Funcionario nao encotrado! cpf buscado " << cpf_ << endl;
+		system("sleep 5");
+	}else{
+		armazenaFuncionarios.erase(armazenaFuncionarios.begin() +findPosit);
+		cout << armazenaFuncionarios[findPosit].getNome() << " deletado com sucesso!" << endl;
+		gravarFuncionarios();
+		mostrarFuncionarios();
+		system("sleep 5");
+	}
+
+
 }
 
 /**
@@ -105,7 +134,7 @@ void Empresa::empregarFuncionarios(){
 		cin.ignore();
 		cout<<"Digite o nome do funcionario.: ";
 		getline(cin, nome);
-		cin.ignore();
+		//cin.ignore();
 		cout<<"Digite o cpf.: ";
 		cin >> cpf;
 		cin.ignore();
