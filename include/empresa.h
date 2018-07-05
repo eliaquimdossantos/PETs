@@ -47,6 +47,7 @@ public:
 	//temporária para testes
 	void adicionarFuncionarios(Funcionario& f);
 	void mostrarFuncionarios();
+	void buscarFuncionario();
 	void empregarFuncionarios();
 };
 

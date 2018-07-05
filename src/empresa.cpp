@@ -90,7 +90,7 @@ void Empresa::mostrarFuncionarios(){
 	
 	if(armazenaFuncionarios.empty())
 		cout << " lista vazia!" << endl;
-	system("sleep 6");
+	system("sleep 8");
 }
 
 void Empresa::excluiFuncionario(){
@@ -115,6 +115,31 @@ void Empresa::excluiFuncionario(){
 
 	}else{
 		cout << "Funcionario nao encotrado! cpf buscado " << cpf_ << endl;
+		system("sleep 5");
+	}
+		
+}
+
+void Empresa::buscarFuncionario(){
+	string cpf= "";
+	cout << "digite o cpf do funcionario a ser buscado: ";
+	cin >> cpf;
+	cin.ignore();
+	carregarFuncionarios();
+	bool find = false;
+
+	for(it=armazenaFuncionarios.begin(); it != armazenaFuncionarios.end(); it++){
+		if((*it).getCpf() == cpf){
+			find = true;
+			cout << *it << endl;
+			break;
+		}
+	}
+
+	if(find)
+		system("sleep 7");
+	else{
+		cout << "Funcionario com cpf " << cpf << " nao encotrado!" << endl;
 		system("sleep 5");
 	}
 		
