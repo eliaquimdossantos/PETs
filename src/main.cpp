@@ -23,12 +23,11 @@ int main(){
 		cout<<" * (9) Consultar animais por funcionarios     *"<<endl;
 		cout<<" * (0) Exit                                   *"<<endl;
 		cout<<" **********************************************"<<endl;
-		cout<<" Digite sua opção:";
+		cout<<" Digite sua opção: ";
 
 		
 		cin>>op;
-
-
+		cin.ignore();
 		switch(op){
 
 			case 5:
@@ -36,13 +35,11 @@ int main(){
 			break;
 
 			case 6:
-
 				 my.excluiFuncionario();
 			break;
 
 			case 7:
 				my.mostrarFuncionarios();
-				cout << "7" << endl;
 			break;
 
 			default:

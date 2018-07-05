@@ -7,7 +7,8 @@ Empresa::~Empresa(){}
 * @brief Le as informacoes do arquivo csv de funcionarios e amazena em memoria
 **/
 void Empresa::carregarFuncionarios(){
-	
+	armazenaFuncionarios.clear();
+
 	ifstream csvFunc(pathFuncionarios,std::ios::in);
 
     if (csvFunc.is_open() && csvFunc.good()){
@@ -77,11 +78,14 @@ void Empresa::adicionarFuncionarios(Funcionario& f){
 void Empresa::mostrarFuncionarios(){
 
 	carregarFuncionarios();
+	cout << "		LISTA DE FUNCIONARIOS 		" << endl << endl;
+	cout << "--------------------------------------------" << endl;
 	vector<Funcionario>::iterator it = armazenaFuncionarios.begin();
 
 	for(; it != armazenaFuncionarios.end(); it++){
 		cout << *it << endl;
 	}
+	system("sleep 6");
 }
 
 void Empresa::excluiFuncionario(){
@@ -97,6 +101,7 @@ void Empresa::excluiFuncionario(){
 			break;
 		}
 	}
+	
 	if(findPosit==-1){
 		cout << "Funcionario nao encotrado! cpf buscado " << cpf_ << endl;
 		system("sleep 5");
@@ -104,7 +109,6 @@ void Empresa::excluiFuncionario(){
 		armazenaFuncionarios.erase(armazenaFuncionarios.begin() +findPosit);
 		cout << armazenaFuncionarios[findPosit].getNome() << " deletado com sucesso!" << endl;
 		gravarFuncionarios();
-		mostrarFuncionarios();
 		system("sleep 5");
 	}
 
