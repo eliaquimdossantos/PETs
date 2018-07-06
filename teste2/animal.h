@@ -22,7 +22,9 @@ protected:
 	float tamanho;
 	string dieta;
 	Veterinario veterinario;
+	int id_veterinario;
 	Tratador tratador;
+	int id_tratador;
 	string batismo;
 
 public:
@@ -144,6 +146,27 @@ public:
 	 * @brief Sobrecarga do oprador de extração 
 	 */
 	friend std::istream& operator>> (std::istream &i, Animal &a);
+	/**
+	 * @brief Sobrecarga do oprador de inserção
+	 */
+	friend std::ostream& operator<< (std::ostream &o, Animal &a);
+	/**
+	 * @brief Obter o id do tratador do animal
+	 */
+	int getIdTratador();
+	/**
+	 * @brief Obter o id do veterinario do animal
+	 */
+	int getIdVeterinario();
+	/**
+	 * @brief Definir o id do tratador do animal
+	 */
+	void setIdTratador(int id_tratador_);
+	/**
+	 * @brief Definir o id do veterinario do animal
+	 */
+	void setIdVeterinario(int id_veterinario_);
+
 };
  
 #endif

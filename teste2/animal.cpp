@@ -96,6 +96,22 @@ void Animal::setTratador(Tratador& tratador_){
 void Animal::setBatismo(string batismo_){
 	batismo = batismo_;
 }
+
+int Animal::getIdTratador(){
+	return id_tratador;
+}
+
+int Animal::getIdVeterinario(){
+	return id_veterinario;
+}
+
+void Animal::setIdTratador(int id_tratador_){
+	id_tratador = id_tratador_;
+}
+
+void Animal::setIdVeterinario(int id_veterinario_){
+	id_veterinario = id_veterinario_;
+}
 		
 std::istream& operator>> (std::istream &i, Animal &a){
 	string aux = "";
@@ -114,12 +130,24 @@ std::istream& operator>> (std::istream &i, Animal &a){
 	getline(i, a.dieta, ';');
 
 	getline(i, aux, ';');
-	a.veterinario.setId(std::stoi(aux, nullptr, 10));
+	a.id_veterinario = std::stoi(aux, nullptr, 10);
 
 	getline(i, aux, ';');
-	a.tratador.setId(std::stoi(aux, nullptr, 10));
+	a.id_tratador = std::stoi(aux, nullptr, 10);
 
 	getline(i, a.batismo);
 
 	return i;	
+}
+
+std::ostream& operator<< (std::ostream &o, Animal &a){
+	o << "ID: " 				<< a.id << endl 
+	  << "Nome: " 				<< a.nome << "    "
+	  << "Nome de batismo: " 	<< a.batismo << endl
+	  << "Nome cientifico: " 	<< a.cientifico << "    "
+	  << "Sexo: " 				<< a.sexo << endl
+	  << "Tamanho: "			<< a.tamanho << " metros" << "    "
+	  << "Dieta: "				<< a.dieta << endl
+	  << "ID do tratador: " 	<< a.id_tratador << "    "
+	  << "ID do veterinario: "	<< a.id_veterinario << endl;
 }

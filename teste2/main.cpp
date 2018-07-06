@@ -1,6 +1,5 @@
 #include "empresa.h"
 #include "veterinario.h"
-
 int main(){
 
 	Empresa my("../data/");
