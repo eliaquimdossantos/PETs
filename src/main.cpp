@@ -54,6 +54,9 @@ int main(){
 			case 7:
 				my.mostrarFuncionarios();
 			break;
+			case 8:
+				my.buscarFuncionario();
+			break;
 
 			default:
 				std::cout << "opcao invalida " << std::endl;
