@@ -27,7 +27,7 @@ public:
 	 * @brief Utilizada para obter a origem do animal
 	 * @return Origem do animal
 	 */
-	string getOrigem();
+	string getUfOrigem();
 	/**
 	 * @brief Utilizada para obter a origem do animal
 	 * @return Origem do animal
@@ -37,12 +37,12 @@ public:
 	 * @brief Define o país de origem do animal
 	 * @param uf_origem_ País de origem do animal
 	 */
-	void setOrigem(string uf_origem_);
+	void setUfOrigem(string uf_origem_);
 	/**
 	 * @brief Define a autorização do animal
 	 * @param autorizacao_ Autorização do animal
 	 */
-	void setAutoriza(string autorizacao_);
-}
+	void setAutorizacao(string autorizacao_);
+};
 
 #endif

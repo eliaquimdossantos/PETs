@@ -8,9 +8,9 @@ using std::string;
 
 class Ave : protected Animal{
 protected:
-	int tamanho_bico;
 	int envergadura;
-
+	int tamanho_bico;
+	
 public:
 	/**
 	 *@brief Construtor padrão

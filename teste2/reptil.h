@@ -7,6 +7,7 @@
 #define REPTIL_H
 
 #include <string>
+#include "animal.h"
 
 using std::string;
 

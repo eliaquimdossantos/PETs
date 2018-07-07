@@ -1,13 +1,13 @@
 #include "nativo.h"
+#include "veterinario.h"
+#include "tratador.h"
 
 Nativo::Nativo(){
 	
 }
 	
-Nativo::Nativo(string uf_origem_, string autorizacao_, string ibama_):
-	uf_origem(uf_origem_), autorizacao(autorizacao_),
-	AnimalSilvestre(ibama_){
-
+Nativo::Nativo(string uf_origem_, string autorizacao_, string ibama_) :
+	uf_origem(uf_origem_), autorizacao(autorizacao_), AnimalSilvestre(ibama_){
 }	
 Nativo::~Nativo(){
 

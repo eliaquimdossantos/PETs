@@ -118,3 +118,14 @@ std::istream& operator>> (std::istream &i, Funcionario &f){
 	    
 	return i;	
 }
+
+void Funcionario::operator=(Funcionario f){
+	id = f.id;
+	funcao = f.funcao;
+	nome = f.nome;
+	cpf = f.cpf;
+	idade = f.idade;
+	tipoSanguineo = f.tipoSanguineo;
+	fatorRH = f.fatorRH;
+	especialidade = f.especialidade;
+}

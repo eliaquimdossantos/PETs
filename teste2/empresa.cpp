@@ -37,7 +37,7 @@ void Empresa::carregarAnimais(){
     	
     		Animal a;
     		//sobrecarregar ler getline ;
-			while(csvFunc >> a){
+			while(csvAnim >> a){
 					armazenaAnimais.push_back(a);
 			}
 
@@ -93,7 +93,7 @@ void Empresa::gravarAnimais(){
 	//grava no arquivo limpo
     if (csvAnim.is_open() && csvAnim.good()){
     	
-       for (it_a=armazenaAnimais.begin(); it_a != armazenaFuncionarios.end(); it_a++){
+       for (it_a=armazenaAnimais.begin(); it_a != armazenaAnimais.end(); it_a++){
                 //dados separados por ;
                 csvAnim << (*it_a).gerarCSV(*it_a);
         }
@@ -129,7 +129,7 @@ void Empresa::adicionarFuncionarios(Funcionario& f){
 /**
 * @brief verifica se ja exite um animal com mesmo identificador, se nao adiciona
 **/
-void Empresa::adicionaAnimais(Animal& a){
+void Empresa::adicionarAnimais(Animal& a){
 	bool find = false;
 	carregarFuncionarios();
 
@@ -209,7 +209,7 @@ void Empresa::excluiFuncionario(){
 }
 
 void Empresa::excluiAnimal(){
-	int id_ = "";
+	int id_ = 0;
 	cout << "Digite o identificador do animal a ser exluido: ";
 	cin >> id_;
 	carregarAnimais();
@@ -346,7 +346,7 @@ void Empresa::empregarFuncionarios(){
 
 }
 
-bool Empresa::funcionarioExiste(int id_){
+bool Empresa::funcionarioExiste(string id_){
 	carregarFuncionarios();
 	bool find = false;
 
@@ -364,11 +364,11 @@ bool Empresa::funcionarioExiste(int id_){
 	}
 }
 
-bool Empressa::animalExiste(int id_){
+bool Empresa::animalExiste(int id_){
 	carregarAnimais();
 	bool find = false ;
 
-	for(it_a=armazenaFuncionarios.begin(); it_a != armazenaFuncionarios.end(); it_a++){
+	for(it_a=armazenaAnimais.begin(); it_a != armazenaAnimais.end(); it_a++){
 		if((*it_a).getId() == id_){
 			find = true;
 			break;
@@ -383,14 +383,16 @@ bool Empressa::animalExiste(int id_){
 }
 
 void Empresa::cadastrarAnimal(){
-	Funcionario * veterinario;
-	Funcionario * tratador;
+
+	Veterinario veterinario;
+	Tratador tratador;
 	bool permissao = true;
-	int id, id_tratador, id_veterinario;
+	int id;
 	float tamanho;
-	string classe, nome, cientifico, sexo, dieta, batismo;
+	string classe, nome, cientifico, sexo, dieta, batismo, id_tratador, id_veterinario;
+
 	cout << "------------CADASTRAR ANIMAL-------------" << endl;
-	cout << "O animal a ser cadastrado é um(a):"
+	cout << "O animal a ser cadastrado é um(a):";
 	cout << "1 - Ave" << endl;
 	cout << "2 - Anfíbio" << endl;
 	cout << "3 - Mamifero" << endl;
@@ -399,7 +401,7 @@ void Empresa::cadastrarAnimal(){
 	int op = 0;
 	cin >> op;
 
-	if(op != 1 & op != 2 && op != 3 && op != 4)
+	if(op != 1 && op != 2 && op != 3 && op != 4)
 		throw "Erro: operação inválida";
 
 	cin.ignore();
@@ -410,7 +412,7 @@ void Empresa::cadastrarAnimal(){
 		break;
 		case 2:
 		classe = "Amphibia";
-		break
+		break;
 		case 3:
 		classe = "Reptilia";
 		break;
@@ -424,10 +426,10 @@ void Empresa::cadastrarAnimal(){
 	getline(cin, cientifico);
 	cout << "E o sexo ('M' ou 'F')? ";
 	getline(cin, sexo);
-	for(int i = 0; i < sexo.length(); i++)
+	for(unsigned i = 0; i < sexo.length(); i++)
 		tolower(sexo[i]);
 
-	if(sexo != 'm' && sexo != 'f')
+	if(sexo != "m" && sexo != "f")
 		throw "Erro: informação inválida";
 	
 	cout << "A dieta do animal é a base de? ";
@@ -458,34 +460,36 @@ void Empresa::cadastrarAnimal(){
 			permissao = false;
 			cout << "Erro: número inválido";
 		}
-	}while(permissao == false)
+	}while(permissao == false);
+	
+	permissao == false;
 	
 	do{
 		cout << "Informe o número identificador do tratador deste animal (0 caso não haja): ";
 		try{		
 			cin >> id_tratador;	
-			if(id_tratador == 0){
+			if(id_tratador == "0"){
 				permissao = true;
 			}else{
 				permissao = !funcionarioExiste(id_tratador);
 			}
-		}catch(...){
-			permissao == false
+		}catch(...){			
 			cout << "Erro: identificador inválido";
 		}
 	}while (permissao == false);	
 
+	permissao == false;
+
 	do{
-		cout << "Informe o número identificador do veterinario deste animal (0 caso não haja): ";
+		cout << "Informe o número identificador do veterinario deste animal (0 caso não haja): ";		
 		try{		
 			cin >> id_veterinario;	
-			if(id_veterinario == 0){
+			if(id_veterinario == "0"){
 				permissao = true;
 			}else{
 				permissao = !funcionarioExiste(id_veterinario);
 			}
 		}catch(...){
-			permissao == false
 			cout << "Erro: identificador inválido";
 		}
 	}while (permissao == false);	
@@ -493,22 +497,21 @@ void Empresa::cadastrarAnimal(){
 	carregarFuncionarios();
 	carregarAnimais();
 
-	it_f = armazenaFuncionarios.begin();
-	for(it_f; it_f != armazenaFuncionarios.end(); it_f++){
-		if((*it_f).getId() == id_veterinario){
-			veterinario = it_f;
+	for(auto it : armazenaFuncionarios){
+		if(it.getId() == id_tratador){
+			tratador = (Tratador) it;
 		}
 	}
 
-	it_f = armazenaFuncionarios.begin();
-	for(it_f; it_f != armazenaFuncionarios.end(); it_f++){
-		if((*it_f).getId() == id_tratador){
-			tratador = it_f;
+	for(auto it : armazenaFuncionarios){
+		if(it.getId() == id_veterinario){
+			veterinario = (Veterinario) it;
 		}
 	}
 
-	Animal * a = new Animal(id, classe, nome, cientifico, sexo, tamanho, dieta, 
+	Animal a(id, classe, nome, cientifico, sexo, tamanho, dieta, 
 		veterinario, tratador, batismo);
 
-	armazenaAnimais.push_back()	
+	armazenaAnimais.push_back(a);
+
 }

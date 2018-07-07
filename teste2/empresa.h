@@ -4,6 +4,7 @@
 #include "funcionario.h"
 #include "veterinario.h"
 #include "tratador.h"
+#include "animal.h"
 
 #include <vector>
 using std::vector;
@@ -51,13 +52,13 @@ public:
 
 	//temporária para testes
 	void adicionarFuncionarios(Funcionario& f);
-	void adicionarAnimais(Funcionario& f);
+	void adicionarAnimais(Animal& a);
 	void mostrarFuncionarios();
 	void mostrarAnimais();
 	void buscarFuncionario();
 	void empregarFuncionarios();
 	void cadastrarAnimal();
-	bool funcionarioExiste(int id_);
+	bool funcionarioExiste(string id_);
 	bool animalExiste(int id_);
 };
 

@@ -32,6 +32,6 @@ public:
 	 * @param uf_origem_ País de origem do animal
 	 */
 	void setUfOrigem(string uf_origem_);
-}
+};
 
 #endif

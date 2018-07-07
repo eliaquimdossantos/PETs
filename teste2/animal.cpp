@@ -4,6 +4,7 @@
  */
 
 #include "animal.h"
+#include <sstream>
 
 Animal::Animal() {
 
@@ -150,4 +151,22 @@ std::ostream& operator<< (std::ostream &o, Animal &a){
 	  << "Dieta: "				<< a.dieta << endl
 	  << "ID do tratador: " 	<< a.id_tratador << "    "
 	  << "ID do veterinario: "	<< a.id_veterinario << endl;
+
+	  return o;
+}
+
+string Animal::gerarCSV(Animal &a){
+	std::ostringstream id_string;
+    id_string << a.id;
+    std::ostringstream id_vet;
+    id_vet << a.id_veterinario;
+    std::ostringstream id_trat;
+    id_trat << a.id_tratador;
+    std::ostringstream tam_str;
+    tam_str << a.tamanho;
+
+	string aux = id_string.str() + ";" + a.nome + ";" + a.batismo + ";" + a.cientifico + ";" +
+					a.sexo + ";" + tam_str.str() + ";" + a.dieta + ";" + id_trat.str()
+					+ ";" + id_vet.str() + "\n";
+	return aux;
 }

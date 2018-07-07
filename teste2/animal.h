@@ -53,7 +53,7 @@ public:
 	string getClasse();
 	/**
 	 * @brief Utilizada para obter o
-	/** nome do animal
+	 * nome do animal
 	 * @return Nome do animal
 	 */
 	string getNome();
@@ -166,6 +166,10 @@ public:
 	 * @brief Definir o id do veterinario do animal
 	 */
 	void setIdVeterinario(int id_veterinario_);
+	/**
+	 * @brief Gera uma string pronta para ser adicionada a um arquivo CSV
+	 */
+	string gerarCSV(Animal& a);
 
 };
  
