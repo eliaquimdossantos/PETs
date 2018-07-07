@@ -449,7 +449,7 @@ void Empresa::cadastrarAnimal(){
 	for(unsigned i = 0; i < sexo.length(); i++)
 		tolower(sexo[i]);
 
-	if(sexo != "m" && sexo != "f")
+	if(sexo != "m" && sexo != "f")	
 		throw "Erro: informação inválida";
 	
 	cout << "A dieta do animal é a base de? ";

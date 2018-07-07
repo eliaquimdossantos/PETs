@@ -2,7 +2,7 @@
 #define TRATADOR_H
 #include "funcionario.h"
 
-class Tratador : protected Funcionario{
+class Tratador : public Funcionario{
 
 public:
 	Tratador();
