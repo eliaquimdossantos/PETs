@@ -482,7 +482,6 @@ void Empresa::cadastrarAnimal(){
 		}
 	}while(permissao == false);
 	
-	permissao == false;
 	
 	do{
 		cout << "Informe o número identificador do tratador deste animal (0 caso não haja): ";
@@ -498,7 +497,6 @@ void Empresa::cadastrarAnimal(){
 		}
 	}while (permissao == false);	
 
-	permissao == false;
 
 	do{
 		cout << "Informe o número identificador do veterinario deste animal (0 caso não haja): ";		
