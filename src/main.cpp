@@ -2,7 +2,7 @@
 #include "veterinario.h"
 int main(){
 
-	Empresa my("../data/");
+	Empresa my("../data");
 	
 	int op=0;
 	do{
