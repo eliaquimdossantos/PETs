@@ -152,7 +152,6 @@ std::istream& operator>> (std::istream &i, Animal &a){
 
 	getline(i, a.batismo);
 
-	std::cout << "Chegou no final da extraçao" << std::endl;
 
 	return i;	
 }
