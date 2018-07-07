@@ -21,8 +21,7 @@ void Empresa::carregarFuncionarios(){
 
 		csvFunc.close();
 	}else 
-       cout << "Erro ao abrir arquivo " << pathFuncionarios << endl;
-       //erro ao abrir arquivo... modificar depois p throw 
+      throw 1;
 }
 
 /**
@@ -47,8 +46,7 @@ void Empresa::carregarAnimais(){
 		csvAnim.close();
 
 	}else 
-       cout << "Erro ao abrir arquivo " << pathAnimais << endl;
-       //erro ao abrir arquivo... modificar depois p throw 
+       throw 1;
 }
 
 /**
@@ -64,7 +62,7 @@ void Empresa::gravarFuncionarios(){
 			limpar << "\n";
 			limpar.close();
 	}else
-		cout << "Erro ao abrir arquivo  " << pathFuncionarios << endl;
+		throw 1;
 
 	//grava no arquivo limpo
     if (csvFunc.is_open() && csvFunc.good()){
@@ -75,8 +73,8 @@ void Empresa::gravarFuncionarios(){
         }
          csvFunc.close();
 	}else 
-       cout << "Erro ao abrir arquivo " << pathFuncionarios << endl;
-       // modificar depois p throw 
+       throw 1;
+       
 }
 
 /**
@@ -98,7 +96,8 @@ void Empresa::gravarAnimais(string nomeArqSaida = ""){
 			limpar << "\n";
 			limpar.close();
 	}else
-		cout << "`w` Erro ao abrir arquivo " << pathAnimais << endl;
+       throw 1;
+		
 
 	//grava no arquivo limpo
     if (csvAnim.is_open() && csvAnim.good()){
@@ -109,8 +108,7 @@ void Empresa::gravarAnimais(string nomeArqSaida = ""){
         }
          csvAnim.close();
 	}else 
-       cout << "Erro ao abrir arquivo " << pathAnimais << endl;
-       // modificar depois p throw 
+		throw 1;
 }
 
 /**
@@ -132,7 +130,8 @@ void Empresa::adicionarFuncionarios(Funcionario& f){
 		cout << endl << "Bem vindo " << f.getNome() << endl;
 		gravarFuncionarios();
 	}else{
-		cout << endl <<" Funcionario existente!" << endl;
+		throw 2;
+
 	}
 }
 
@@ -169,7 +168,7 @@ void Empresa::adicionarAnimais(Animal& a){
 		cout << endl << "Bem vindo " << a.getBatismo() << endl;
 		gravarAnimais(pathAnimais);
 	}else{
-		cout << endl <<" Animal existente!" << endl;
+		throw 3;
 	}
 }
 
@@ -185,7 +184,7 @@ void Empresa::mostrarFuncionarios(){
 	}
 	
 	if(armazenaFuncionarios.empty())
-		cout << " lista vazia!" << endl;
+		throw 4;
 	system("sleep 8");
 }
 
@@ -201,7 +200,7 @@ void Empresa::mostrarAnimais(){
 	}
 	
 	if(armazenaAnimais.empty())
-		cout << " lista vazia!" << endl;
+		throw 4;
 	system("sleep 8");
 }
 
@@ -226,7 +225,7 @@ void Empresa::excluiFuncionario(){
 		gravarFuncionarios();
 
 	}else{
-		cout << "Funcionario nao encotrado! cpf buscado " << cpf_ << endl;
+		throw 5;
 		system("sleep 5");
 	}
 		
@@ -253,7 +252,7 @@ void Empresa::excluiAnimal(){
 		gravarAnimais(pathAnimais);
 
 	}else{
-		cout << "Animal nao encotrado! identificador buscado " << id_ << endl;
+		throw 6;
 		system("sleep 5");
 	}
 		
@@ -278,7 +277,7 @@ void Empresa::buscarFuncionario(){
 	if(find)
 		system("sleep 7");
 	else{
-		cout << "Funcionario com cpf " << cpf << " nao encotrado!" << endl;
+		throw 7;
 		system("sleep 5");
 	}
 		
@@ -426,7 +425,7 @@ void Empresa::cadastrarAnimal(){
 	cin >> op;
 
 	if(op != 1 && op != 2 && op != 3 && op != 4)
-		throw "Erro: operação inválida";
+		throw 8;
 
 	cin.ignore();
 
@@ -543,7 +542,6 @@ void Empresa::consultarPorClasse(){
 
 	int op;
 
-	cout << "Informe a classe do animal: ";
 	cout << "1- Anfíbio: " << endl;
 	cout << "2- Mamífero: " << endl;
 	cout << "3- Réptil" << endl;
@@ -588,13 +586,16 @@ void Empresa::consultarPorClasse(){
 
 void Empresa::consultarPorNome(){
 	string nome;
-
+	armazenaAnimais.clear();
+	carregarAnimais();
 	cout << "Informe o nome do animal: ";
 	getline(cin, nome);
 
 	for(auto it : armazenaAnimais){
 		if(it.getNome() == nome){
-			cout << it;				
+			cout << it;
+			system("sleep 6");
+			break;			
 		}else{
 			cout << "Não encontrado" << endl;
 		}
@@ -611,9 +612,11 @@ void Empresa::consultarAnimalPorFunc(){
 
 	for(auto it : armazenaAnimais){
 		if(it.getIdTratador() == id || it.getIdVeterinario() == id){
-			cout << it;				
+			cout << it;	
+
 		}else{
 			cout << "Não encontrado" << endl;
 		}
 	}
+	system("sleep 6");
 }

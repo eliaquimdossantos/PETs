@@ -4,7 +4,7 @@ Util::~Util(){}
 
 void Util::buscaExporta(string classe, string veterinario, string tratador){
 	//carregar dados dos animais armazenado em arquivo
-	Empresa my("data");
+	Empresa my("data/");
 	my.carregarAnimais();
 	armAnimal = my.getArmAnimais(); //atribui no conteiner
 
@@ -19,7 +19,7 @@ void Util::buscaExporta(string classe, string veterinario, string tratador){
 }
 
 void Util::exportar(string nomeArqSaida){
-	Empresa my("data");
+	Empresa my("data/");
 	
 	if(armSaida.empty()){
 		my.setArmAnimais(armAnimal);
@@ -52,6 +52,7 @@ string classe="null", veterinario="null", tratador="null", nomeArqSaida=string(a
 		Util u;
 		u.buscaExporta(classe, veterinario,tratador);
 		u.exportar(nomeArqSaida);
+		cout << "dados exportados com sucesso! local: " << "data/"+nomeArqSaida << endl;
 	}
 
 
