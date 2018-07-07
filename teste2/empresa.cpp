@@ -30,7 +30,7 @@ void Empresa::carregarFuncionarios(){
 **/
 void Empresa::carregarAnimais(){
 	armazenaAnimais.clear();
-
+ 
 	ifstream csvAnim(pathAnimais,std::ios::in);
 
     if (csvAnim.is_open() && csvAnim.good()){
@@ -39,11 +39,12 @@ void Empresa::carregarAnimais(){
     		//sobrecarregar ler getline ;
 			while(csvAnim >> a){
 					armazenaAnimais.push_back(a);
+
 			}
 
 		csvAnim.close();
 	}else 
-       cout << "Erro ao abrir arquivo " << pathAnimais << endl;
+       cout << "`r` Erro ao abrir arquivo " << pathAnimais << endl;
        //erro ao abrir arquivo... modificar depois p throw 
 }
 
@@ -60,7 +61,7 @@ void Empresa::gravarFuncionarios(){
 			limpar << "\n";
 			limpar.close();
 	}else
-		cout << "Erro ao abrir arquivo 1" << pathFuncionarios << endl;
+		cout << "Erro ao abrir arquivo  " << pathFuncionarios << endl;
 
 	//grava no arquivo limpo
     if (csvFunc.is_open() && csvFunc.good()){
@@ -94,7 +95,7 @@ void Empresa::gravarAnimais(string nomeArqSaida = ""){
 			limpar << "\n";
 			limpar.close();
 	}else
-		cout << "Erro ao abrir arquivo 1" << pathAnimais << endl;
+		cout << "`w` Erro ao abrir arquivo " << pathAnimais << endl;
 
 	//grava no arquivo limpo
     if (csvAnim.is_open() && csvAnim.good()){
