@@ -83,6 +83,16 @@ public:
 	 */
    	Veterinario getVeterinario();
    	/**
+	 * @brief Utilizada para obter o nome do veterinário do animal
+	 * @return Nome do veterinario do animal
+	 */
+   	string getNomeVeterinario();
+   	/**
+	 * @brief Utilizada para obter o nome do tratador do animal
+	 * @return Nome tratador do animal
+	 */
+	string getNomeTratador();
+   	/**
 	 * @brief Utilizada para obter o tratador do animal
 	 * @return Tratador do animal
 	 */

@@ -50,6 +50,14 @@ Veterinario Animal::getVeterinario(){
 	return veterinario;
 }
 
+string Animal::getNomeVeterinario(){
+	return veterinario.getNome();
+}
+
+string Animal::getNomeTratador(){
+	return tratador.getNome();
+}
+
 Tratador Animal::getTratador(){
 	return tratador;
 }
