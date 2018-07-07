@@ -10,8 +10,8 @@ void Util::buscaExporta(string classe, string veterinario, string tratador){
 
 	for(itA = armAnimal.begin(); itA != armAnimal.end(); itA++){
 		//pesquisa pelos parametros e armazena no vector de saida
-		if((classe == (*itA).getClasse()) || (veterinario == (*itA).getVeterinario()) || (tratador == (*itA).getTratador())){
-			armSaida.push_back(itA*);
+		if((classe == (*itA).getClasse()) || (veterinario == (*itA).getNomeVeterinario()) || (tratador == (*itA).getNomeTratador())){
+			armSaida.push_back(*itA);
 		}
 
 	}
@@ -49,9 +49,9 @@ string classe="null", veterinario="null", tratador="null", nomeArqSaida=string(a
 			if(string(argv[i]) == "-t")
 				tratador = argv[i+1];
 		}
-
-		buscaExporta(classe, veterinario,tratador);
-		exportar(nomeArqSaida);
+		Util u;
+		u.buscaExporta(classe, veterinario,tratador);
+		u.exportar(nomeArqSaida);
 	}
 
 

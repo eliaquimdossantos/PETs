@@ -80,16 +80,14 @@ void Empresa::gravarFuncionarios(){
 **/
 void Empresa::gravarAnimais(string nomeArqSaida = ""){
 	
-	if(nomeArqSaida = ""){
-		ofstream limpar(pathAnimais+,std::ios::out);
-		ofstream csvAnim(pathAnimais,std::ios::out);
+	if(nomeArqSaida == ""){
+		nomeArqSaida = diretorioData+pathAnimais;
 	}else{
-		ofstream limpar(diretorioData+nomeArqSaida;,std::ios::out);
-		ofstream csvAnim(diretorioData+nomeArqSaida,std::ios::out);
-
+		nomeArqSaida = diretorioData+nomeArqSaida;
 	}
 
-
+	ofstream limpar(nomeArqSaida,std::ios::out);
+	ofstream csvAnim(nomeArqSaida,std::ios::out);
 
 	//limpar arquivo
 	if (limpar.is_open() && limpar.good()){
@@ -138,14 +136,14 @@ vector<Animal> Empresa::getArmAnimais(){
 	return armazenaAnimais;
 }
 
-vector<Funcionario> getArmFuncionarios(){
+vector<Funcionario> Empresa::getArmFuncionarios(){
 	return armazenaFuncionarios;
 }
 
-void setArmAnimais(vector<Animal> &a){
+void Empresa::setArmAnimais(vector<Animal> &a){
 	armazenaAnimais = a;
 }
-void setFuncionarios(vector<Funcionarios> &f){
+void Empresa::setFuncionarios(vector<Funcionario> &f){
 	armazenaFuncionarios =f;
 }
 /**
