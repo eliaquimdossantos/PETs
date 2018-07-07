@@ -51,10 +51,10 @@ public:
 	void gravarAnimais(string nomeArqSaida);
 	void excluiFuncionario();
 	void excluiAnimal();
-	//void carregarAnimais(string path_);
 
-	//temporária para testes
 	void adicionarFuncionarios(Funcionario& f);
+	void consultarPorClasse();
+	void consultarPorNome();
 	void adicionarAnimais(Animal& a);
 	void mostrarFuncionarios();
 	void mostrarAnimais();

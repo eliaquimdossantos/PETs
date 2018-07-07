@@ -537,3 +537,64 @@ void Empresa::cadastrarAnimal(){
 	armazenaAnimais.push_back(a);
 
 }
+
+void Empresa::consultarPorClasse(){
+	carregarFuncionarios();
+
+	int op;
+
+	cout << "Informe a classe do animal: ";
+	cout << "1- Anfíbio: " << endl;
+	cout << "2- Mamífero: " << endl;
+	cout << "3- Réptil" << endl;
+	cout << "4- Ave" << endl;
+	cout << "Informe a classe do animal: " << endl;
+	cin >> op;
+
+	switch(op){
+		case 1:
+			for(auto it : armazenaAnimais){
+				if(it.getClasse() == "Amphibia"){
+					cout << it;				
+				}
+			}
+			break;
+
+		case 2:
+			for(auto it : armazenaAnimais){
+				if(it.getClasse() == "Mammalia"){
+					cout << it;				
+			}
+		}
+			break;
+		case 3:
+			for(auto it : armazenaAnimais){
+				if(it.getClasse() == "Reptilia"){
+					cout << it;				
+				}
+			}
+			break;
+		case 4:
+			for(auto it : armazenaAnimais){
+				if(it.getClasse() == "Aves"){
+					cout << it;				
+				}
+			}
+			break;
+		default:
+			cout << "Operação inválida" << endl;
+	}
+}
+
+void Empresa::consultarPorNome(){
+	string nome;
+
+	cout << "Informe o nome do animal: ";
+	getline(cin, nome);
+
+	for(auto it : armazenaAnimais){
+		if(it.getNome() == nome){
+			cout << it;				
+		}
+	}
+}

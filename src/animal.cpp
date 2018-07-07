@@ -160,6 +160,7 @@ std::istream& operator>> (std::istream &i, Animal &a){
 std::ostream& operator<< (std::ostream &o, Animal &a){
 	o << "ID: " 				<< a.id << endl 
 	  << "Nome: " 				<< a.nome << "    "
+	  << "Classe "				<< a.classe << "    "
 	  << "Nome de batismo: " 	<< a.batismo << endl
 	  << "Nome cientifico: " 	<< a.cientifico << "    "
 	  << "Sexo: " 				<< a.sexo << endl
@@ -181,8 +182,8 @@ string Animal::gerarCSV(Animal &a){
     std::ostringstream tam_str;
     tam_str << a.tamanho;
 
-	string aux = id_string.str() + ";" + a.nome + ";" + a.batismo + ";" + a.cientifico + ";" +
+	string aux = id_string.str() + ";" + a.classe + ";" + a.nome +  ";" + a.cientifico + ";" +
 					a.sexo + ";" + tam_str.str() + ";" + a.dieta + ";" + id_trat.str()
-					+ ";" + id_vet.str() + "\n";
+					+ ";" + id_vet.str() + ";" + a.batismo + "\n";
 	return aux;
 }

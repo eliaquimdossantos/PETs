@@ -29,7 +29,20 @@ int main(){
 		cin>>op;
 		cin.ignore();
 		switch(op){
+			case 0:
+				break;
+			case 1:
+				my.cadastrarAnimal();
+			break;
 
+			case 2:
+				my.excluiAnimal();
+			break;
+
+			case 3:
+				my.consultarPorClasse();
+			break;
+			
 			case 5:
 				my.empregarFuncionarios();
 			break;

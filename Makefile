@@ -1,31 +1,112 @@
+# Programa Pet Fera
+# Created by David Franklin e Eliaquim dos Santos
+# IMD0030 LP1 - Prof. Silvio Sampaio - BTI UFRN
+# @date 06/06/2018
+#
+# $@ nome do alvo (target)
+# $^ nome de todos os pré-requisitos sem duplicatas
+# $< nome do primeiro pré-requisito
+#
+
+# variáveis genéricas
 INC_DIR = include
 SRC_DIR = src
 OBJ_DIR = build
 LIB_DIR = lib
-BIN = bin
+CC      = g++
+CFLAGS  = -Wall -pedantic -std=c++11 -g -O0 -I. -I$(INC_DIR)/$(PROG_DIR)
+CODFONT = $(SRC_DIR)/anfibio.cpp $(SRC_DIR)/animal.cpp $(SRC_DIR)/animalsilvestre.cpp $(SRC_DIR)/ave.cpp $(SRC_DIR)/aveexotica.cpp $(SRC_DIR)/empresa.cpp $(SRC_DIR)/avenativa.cpp $(SRC_DIR)/funcionario.cpp $(SRC_DIR)/exotico.cpp $(SRC_DIR)/util.cpp $(SRC_DIR)/nativo.cpp $(SRC_DIR)/tratador.cpp $(SRC_DIR)/veterinario.cpp $(SRC_DIR)/reptil.cpp
+CABECALHOS = 
 
-CC = g++
-CFLAGS = -Wall -pedantic -std=c++11 -I$(INC_DIR)
-CFLB = -pedantic -std=c++11  -I$(INC_DIR)
-ARCHIEVE = ar
+# variáveis do programa 1
+PROG 		= petfera
+PROG_ARG	= ""
+PROG_OBJ	=  $(OBJ_DIR)/main.o $(LIB_DIR)/auxiliar.so
 
-linux: petfera.so
+# variáveis do programa 2
+PROG2 		= exportar
+PROG2_ARG	= ""
+PROG2_OBJ	=  $(OBJ_DIR)/exportar.o $(LIB_DIR)/auxiliar.so
 
-petfera.so: $(SRC_DIR)/animal.cpp $(INC_DIR)/animal.h $(SRC_DIR)/anfibio.cpp $(INC_DIR)/anfibio.h $(SRC_DIR)/reptil.cpp $(INC_DIR)/reptil.h $(SRC_DIR)/ave.cpp $(INC_DIR)/ave.h $(SRC_DIR)/funcionario.cpp $(INC_DIR)/funcionario.h $(SRC_DIR)/tratador.cpp $(INC_DIR)/tratador.h $(SRC_DIR)/veterinario.cpp $(INC_DIR)/veterinario.h $(SRC_DIR)/avenativa.cpp $(INC_DIR)/avenativa.h $(SRC_DIR)/aveexotica.cpp $(INC_DIR)/aveexotica.h $(SRC_DIR)/exotico.cpp $(INC_DIR)/exotico.h $(SRC_DIR)/nativo.cpp $(INC_DIR)/nativo.h $(SRC_DIR)/animalsilvestre.cpp $(INC_DIR)/animalsilvestre.h
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/animal.cpp -o $(OBJ_DIR)/animal.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/anfibio.cpp -o $(OBJ_DIR)/anfibio.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/reptil.cpp -o $(OBJ_DIR)/reptil.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/ave.cpp -o $(OBJ_DIR)/ave.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/funcionario.cpp -o $(OBJ_DIR)/funcionario.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/tratador.cpp -o $(OBJ_DIR)/tratador.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/veterinario.cpp -o $(OBJ_DIR)/veterinario.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/avenativa.cpp -o $(OBJ_DIR)/avenativa.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/aveexotica.cpp -o $(OBJ_DIR)/aveexotica.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/exotico.cpp -o $(OBJ_DIR)/exotico.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/nativo.cpp -o $(OBJ_DIR)/nativo.o 
-	$(CC) $(CFLAGS) -fPIC -c $(SRC_DIR)/animalsilvestre.cpp -o $(OBJ_DIR)/animalsilvestre.o 
-	$(CC) -shared -fPIC -o $(LIB_DIR)/$@ $(OBJ_DIR)/animal.o $(OBJ_DIR)/anfibio.o $(OBJ_DIR)/reptil.o $(OBJ_DIR)/ave.o $(OBJ_DIR)/funcionario.o $(OBJ_DIR)/tratador.o $(OBJ_DIR)/veterinario.o $(OBJ_DIR)/avenativa.o $(OBJ_DIR)/aveexotica.o $(OBJ_DIR)/exotico.o $(OBJ_DIR)/nativo.o $(OBJ_DIR)/animalsilvestre.o 
-	@echo "+++ [Biblioteca dinâmica criada em $(LIB_DIR)/$@] +++"
+# biblioteca dinamica
+LIB_OBJ		= $(OBJ_DIR)/o $(OBJ_DIR)/funcionario.o $(OBJ_DIR)/pessoa_tratador.o $(OBJ_DIR)/pessoa_veterinario.o $(OBJ_DIR)/animal_silvestre.o $(OBJ_DIR)/animal_exotico.o $(OBJ_DIR)/animal_nativo.o $(OBJ_DIR)/animal.o $(OBJ_DIR)/classe_ave.o $(OBJ_DIR)/classe_ave_exotico.o $(OBJ_DIR)/classe_ave_nativo.o $(OBJ_DIR)/classe_anfibio.o $(OBJ_DIR)/classe_anfibio_exotico.o $(OBJ_DIR)/classe_anfibio_nativo.o $(OBJ_DIR)/classe_mamifero.o $(OBJ_DIR)/classe_mamifero_exotico.o $(OBJ_DIR)/classe_mamifero_nativo.o $(OBJ_DIR)/classe_reptil.o $(OBJ_DIR)/classe_reptil_exotico.o $(OBJ_DIR)/classe_reptil_nativo.o
 
+all: p1 p2
+
+# Define o alvo (target) para a compilação completa.
+# Define os alvos "executaveis" como dependências.
+# Ao final da compilação, remove os arquivos objeto.
+
+linux: $(PROG) $(PROG2) 
+	rm $(OBJ_DIR)/*.o
+
+p1: 
+	$(CC) $(CFLAGS) $(SRC_DIR)/empresa.cpp $(SRC_DIR)/funcionario.cpp $(SRC_DIR)/tratador.cpp $(SRC_DIR)/veterinario.cpp $(SRC_DIR)/animal.cpp $(SRC_DIR)/main.cpp -o petfera
+p2: 
+	$(CC) $(CFLAGS) $(SRC_DIR)/empresa.cpp $(SRC_DIR)/funcionario.cpp $(SRC_DIR)/tratador.cpp $(SRC_DIR)/veterinario.cpp $(SRC_DIR)/animal.cpp $(SRC_DIR)/util.cpp -o exportar
+
+# util
+$(OBJ_DIR)/util.o: $(SRC_DIR)/util.cpp $(INC_DIR)/util.h 
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/util.cpp -o $@ $<
+
+# empresa
+$(OBJ_DIR)/empresa.o: $(SRC_DIR)/empresa.cpp $(INC_DIR)/empresa.h $(OBJ_DIR)/funcionario.o $(OBJ_DIR)/tratador.o $(OBJ_DIR)/veterinario.o
+	$(CC) $(CFLAGS) -c $(OBJ_DIR)/veterinario.o $(OBJ_DIR)/funcionario.o $(OBJ_DIR)/tratador.o $(SRC_DIR)/empresa.cpp -o $@ $<
+
+# funcionario
+$(OBJ_DIR)/funcionario.o: $(SRC_DIR)/funcionario.cpp $(INC_DIR)/funcionario.h 
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/funcionario.cpp -o $@ $<
+
+# tratador
+$(OBJ_DIR)/tratador.o: $(SRC_DIR)/tratador.cpp $(INC_DIR)/tratador.h
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/tratador.cpp -o $@ $<
+
+# veterinario
+$(OBJ_DIR)/veterinario.o: $(SRC_DIR)/veterinario.cpp $(INC_DIR)/veterinario.h 
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/veterinario.cpp -o $@ $<
+
+# animal
+$(OBJ_DIR)/animal.o: $(SRC_DIR)/animal.cpp $(INC_DIR)/animal.h 
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/animal.cpp -o $@ $<
+
+# executavel 1
+$(PROG): $(OBJ_DIR)/empresa.o $(OBJ_DIR)/animal.o
+	$(CC) $(CFLAGS) $(SRC_DIR)/main.cpp $(OBJ_DIR)/empresa.o $(OBJ_DIR)/animal.o -o $@
+	@echo "+++ [Executavel $(PROG) criado com sucesso em $(OBJ_DIR)/] +++"
+
+# executavel 2
+$(PROG2): $(OBJ_DIR)/empresa.o $(OBJ_DIR)/animal.o
+	$(CC) $(CFLAGS) $(SRC_DIR)/ultil.cpp $(OBJ_DIR)/empresa.o -o $(OBJ_DIR)/$@
+	@echo "+++ [Executavel $(PROG2) criado com sucesso em $(OBJ_DIR)/] +++"
+
+# remove arquivos executaveis e objetos compilados
 clean:
-	rm build/*.o
+	rm -f $(OBJ_DIR)/*.o
+
+# remove arquivos executaveis
+clean-executables:
+	rm -f $(OBJ_DIR)/*/*.exe
+
+# testa o executavel com o valgrind
+valgrind:
+	valgrind -v --leak-check=full --show-reachable=yes --track-origins=yes $(OBJ_DIR)/$(PROG) $(PROG_ARG)
+
+# up stack - aumenta o tamanho da pilha em sistemas UNIX
+upstack:
+	sudo ulimit -s unlimited
+
+# down stack - volta o tamanho da pilha para o default em sistemas UNIX
+downstack:
+	sudo ulimit -s 8192
+
+# remove arquivos de saida .csv
+rmcsv:
+	rm -f data/*.csv
+
+# gera documentação com o Doxygen
+docs:
+	doxygen
+
+# remove documentação doxygen
+rmdocs:
+	rm -rf documentation/doc
