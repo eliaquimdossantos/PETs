@@ -53,6 +53,7 @@ public:
 	void excluiAnimal();
 
 	void adicionarFuncionarios(Funcionario& f);
+	void consultarAnimalPorFunc();
 	void consultarPorClasse();
 	void consultarPorNome();
 	void adicionarAnimais(Animal& a);

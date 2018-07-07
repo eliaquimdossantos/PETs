@@ -155,7 +155,7 @@ void Empresa::setFuncionarios(vector<Funcionario> &f){
 **/
 void Empresa::adicionarAnimais(Animal& a){
 	bool find = false;
-	carregarFuncionarios();
+	carregarAnimais();
 
 	for(it_a=armazenaAnimais.begin(); it_a != armazenaAnimais.end(); it_a++){
 		if((*it_a).getId() == a.getId()){
@@ -167,7 +167,7 @@ void Empresa::adicionarAnimais(Animal& a){
 	if(!find){
 		armazenaAnimais.push_back(a);
 		cout << endl << "Bem vindo " << a.getBatismo() << endl;
-		gravarFuncionarios();
+		gravarAnimais(pathAnimais);
 	}else{
 		cout << endl <<" Animal existente!" << endl;
 	}
@@ -191,7 +191,7 @@ void Empresa::mostrarFuncionarios(){
 
 void Empresa::mostrarAnimais(){
 
-	carregarFuncionarios();
+	carregarAnimais();
 	cout << endl <<  "		LISTA DE ANIMAIS 		" << endl << endl;
 	cout << "--------------------------------------------" << endl;
 
@@ -250,7 +250,7 @@ void Empresa::excluiAnimal(){
 	if(find){
 		cout << (*it_a).getBatismo() << "deletado com sucesso!" << endl;
 		system("sleep 5");
-		gravarFuncionarios();
+		gravarAnimais(pathAnimais);
 
 	}else{
 		cout << "Animal nao encotrado! identificador buscado " << id_ << endl;
@@ -595,6 +595,25 @@ void Empresa::consultarPorNome(){
 	for(auto it : armazenaAnimais){
 		if(it.getNome() == nome){
 			cout << it;				
+		}else{
+			cout << "Não encontrado" << endl;
+		}
+	}
+}
+
+void Empresa::consultarAnimalPorFunc(){
+	carregarAnimais();
+	int id;
+
+	cout << "Informe o ID do funcionario: " << endl;
+	cin >> id;
+	cin.ignore();
+
+	for(auto it : armazenaAnimais){
+		if(it.getIdTratador() == id || it.getIdVeterinario() == id){
+			cout << it;				
+		}else{
+			cout << "Não encontrado" << endl;
 		}
 	}
 }

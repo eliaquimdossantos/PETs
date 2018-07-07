@@ -57,7 +57,8 @@ int main(){
 			case 8:
 				my.buscarFuncionario();
 			break;
-
+			case 9:
+				my.consultarAnimalPorFunc();
 			default:
 				std::cout << "opcao invalida " << std::endl;
 			
