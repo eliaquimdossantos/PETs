@@ -33,8 +33,11 @@ class Empresa{
 private:
 	vector<Funcionario> armazenaFuncionarios;
 	vector<Animal> armazenaAnimais;
+
+	string diretorioData;
 	string pathFuncionarios;
 	string pathAnimais;
+
 	vector<Animal>::iterator it_a;
 	vector<Funcionario>::iterator it_f;
 
@@ -45,7 +48,7 @@ public:
 	void carregarFuncionarios();
 	void carregarAnimais();
 	void gravarFuncionarios();
-	void gravarAnimais();
+	void gravarAnimais(string nomeArqSaida);
 	void excluiFuncionario();
 	void excluiAnimal();
 	//void carregarAnimais(string path_);
@@ -60,6 +63,10 @@ public:
 	void cadastrarAnimal();
 	bool funcionarioExiste(string id_);
 	bool animalExiste(int id_);
+	vector<Animal> getArmAnimais();
+	void setArmAnimais(vector<Animal> &a);
+	vector<Funcionario> getArmFuncionarios();
+	void setFuncionarios(vector<Funcionario> &f);
 };
 
 #endif

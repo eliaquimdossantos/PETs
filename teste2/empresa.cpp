@@ -1,6 +1,6 @@
 #include "empresa.h"
 
-Empresa::Empresa(string diretorioData_):pathFuncionarios(diretorioData_+"/funcionarios.CSV"),pathAnimais(diretorioData_+"/animais.CSV"){}
+Empresa::Empresa(string diretorioData_):diretorioData(diretorioData_),pathFuncionarios(diretorioData_+"/funcionarios.CSV"),pathAnimais(diretorioData_+"/animais.CSV"){}
 Empresa::~Empresa(){}
 
 /**
@@ -29,7 +29,7 @@ void Empresa::carregarFuncionarios(){
 * @brief Le as informacoes do arquivo csv de animais e amazena em memoria
 **/
 void Empresa::carregarAnimais(){
-	armazenaFuncionarios.clear();
+	armazenaAnimais.clear();
 
 	ifstream csvAnim(pathAnimais,std::ios::in);
 
@@ -78,10 +78,18 @@ void Empresa::gravarFuncionarios(){
 /**
 * @brief Limpa o arquivo csv e grava as informacoes dos animais em memoria no disco
 **/
-void Empresa::gravarAnimais(){
+void Empresa::gravarAnimais(string nomeArqSaida = ""){
 	
-	ofstream limpar(pathAnimais,std::ios::out);
-	ofstream csvAnim(pathAnimais,std::ios::out);
+	if(nomeArqSaida = ""){
+		ofstream limpar(pathAnimais+,std::ios::out);
+		ofstream csvAnim(pathAnimais,std::ios::out);
+	}else{
+		ofstream limpar(diretorioData+nomeArqSaida;,std::ios::out);
+		ofstream csvAnim(diretorioData+nomeArqSaida,std::ios::out);
+
+	}
+
+
 
 	//limpar arquivo
 	if (limpar.is_open() && limpar.good()){
@@ -126,6 +134,20 @@ void Empresa::adicionarFuncionarios(Funcionario& f){
 	}
 }
 
+vector<Animal> Empresa::getArmAnimais(){
+	return armazenaAnimais;
+}
+
+vector<Funcionario> getArmFuncionarios(){
+	return armazenaFuncionarios;
+}
+
+void setArmAnimais(vector<Animal> &a){
+	armazenaAnimais = a;
+}
+void setFuncionarios(vector<Funcionarios> &f){
+	armazenaFuncionarios =f;
+}
 /**
 * @brief verifica se ja exite um animal com mesmo identificador, se nao adiciona
 **/
