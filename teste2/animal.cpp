@@ -125,7 +125,13 @@ void Animal::setIdVeterinario(int id_veterinario_){
 std::istream& operator>> (std::istream &i, Animal &a){
 	string aux = "";
 	getline(i, aux, ';');
+	if(aux == ""){
+		a.id = -1;
+		return i;
+	}
 	a.id = std::stoi(aux, nullptr, 10);
+
+	getline(i, a.classe, ';');
 
 	getline(i, a.nome, ';');
 
@@ -134,7 +140,7 @@ std::istream& operator>> (std::istream &i, Animal &a){
 	getline(i, a.sexo, ';');
 
 	getline(i, aux, ';');
-	a.tamanho = std::stod(aux);
+	a.tamanho = std::stof(aux);
 
 	getline(i, a.dieta, ';');
 
@@ -145,6 +151,8 @@ std::istream& operator>> (std::istream &i, Animal &a){
 	a.id_tratador = std::stoi(aux, nullptr, 10);
 
 	getline(i, a.batismo);
+
+	std::cout << "Chegou no final da extraçao" << std::endl;
 
 	return i;	
 }

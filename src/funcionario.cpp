@@ -106,7 +106,6 @@ std::ostream& operator<< (std::ostream &o, Funcionario const &f) {
 }
 
 std::istream& operator>> (std::istream &i, Funcionario &f){
-		
 	getline(i, f.id, ';');
 	getline(i, f.funcao, ';');
 	getline(i, f.nome, ';');
@@ -118,4 +117,15 @@ std::istream& operator>> (std::istream &i, Funcionario &f){
 	//1;Tratador;Daniel Oscar;123.456.789-10;30;O;+;Felinos		    
 	    
 	return i;	
+}
+
+void Funcionario::operator=(Funcionario f){
+	id = f.id;
+	funcao = f.funcao;
+	nome = f.nome;
+	cpf = f.cpf;
+	idade = f.idade;
+	tipoSanguineo = f.tipoSanguineo;
+	fatorRH = f.fatorRH;
+	especialidade = f.especialidade;
 }

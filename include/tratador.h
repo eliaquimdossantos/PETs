@@ -5,6 +5,8 @@
 class Tratador : public Funcionario{
 
 public:
+	Tratador();
+	Tratador(Funcionario& f);
 	Tratador(string id_, string nome_, string cpf_, string idade_,  string tipoSanguineo_, string fatorRH_,	string especialidade_);
 	~Tratador();
 

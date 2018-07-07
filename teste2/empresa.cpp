@@ -30,21 +30,24 @@ void Empresa::carregarFuncionarios(){
 **/
 void Empresa::carregarAnimais(){
 	armazenaAnimais.clear();
- 
+
 	ifstream csvAnim(pathAnimais,std::ios::in);
 
-    if (csvAnim.is_open() && csvAnim.good()){
-    	
+    if (csvAnim.is_open() && csvAnim.good()){   		
+
     		Animal a;
     		//sobrecarregar ler getline ;
 			while(csvAnim >> a){
-					armazenaAnimais.push_back(a);
-
+					if(a.getId() != -1)
+						armazenaAnimais.push_back(a);
+					else
+						break;
 			}
 
 		csvAnim.close();
+
 	}else 
-       cout << "`r` Erro ao abrir arquivo " << pathAnimais << endl;
+       cout << "Erro ao abrir arquivo " << pathAnimais << endl;
        //erro ao abrir arquivo... modificar depois p throw 
 }
 

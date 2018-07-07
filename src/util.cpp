@@ -4,14 +4,14 @@ Util::~Util(){}
 
 void Util::buscaExporta(string classe, string veterinario, string tratador){
 	//carregar dados dos animais armazenado em arquivo
-	Empresa my("~/PETs/data");
+	Empresa my("/home/eliaquim/PETs/data");
 	my.carregarAnimais();
 	armAnimal = my.getArmAnimais(); //atribui no conteiner
 
 	for(itA = armAnimal.begin(); itA != armAnimal.end(); itA++){
 		//pesquisa pelos parametros e armazena no vector de saida
-		if((classe == *itA.getClasse()) || (veterinario == *itA.getVeterinario()) || (tratador == *itA.getTratador())){
-			armSaida.push_back(itA*);
+		if((classe == (*itA).getClasse()) || (veterinario == (*itA).getNomeVeterinario()) || (tratador == (*itA).getNomeTratador())){
+			armSaida.push_back(*itA);
 		}
 
 	}
@@ -19,7 +19,7 @@ void Util::buscaExporta(string classe, string veterinario, string tratador){
 }
 
 void Util::exportar(string nomeArqSaida){
-	Empresa my("~/PETs/data");
+	Empresa my("/home/eliquim/PETs/data");
 	
 	if(armSaida.empty()){
 		my.setArmAnimais(armAnimal);
@@ -49,9 +49,9 @@ string classe="null", veterinario="null", tratador="null", nomeArqSaida=string(a
 			if(string(argv[i]) == "-t")
 				tratador = argv[i+1];
 		}
-
-		buscaExporta(classe, veterinario,tratador);
-		exportar(nomeArqSaida);
+		Util u;
+		u.buscaExporta(classe, veterinario,tratador);
+		u.exportar(nomeArqSaida);
 	}
 
 

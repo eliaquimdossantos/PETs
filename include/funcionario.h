@@ -71,6 +71,7 @@ public:
 	friend std::ostream& operator<< (std::ostream &o, Funcionario const &f); 
 	friend std::istream& operator>> (std::istream &i, Funcionario &f);
 	std::ostream& imprimir(std::ostream&) const;
+	void operator=(Funcionario f);
 
 };
 
